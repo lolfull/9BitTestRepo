@@ -6,17 +6,11 @@ import ReactDOM from 'react-dom';
 import { StatusSearch } from './statussearch';
 import { StatusUpdate } from './statusupdate';
 import { AccountCreation } from './accountcreation';
+import { Transaction } from './transaction';
 
 ReactDOM.render(
     <div>
-        <AccountCreation/>
-        <br/>
-        <StatusSearch/>
+        <Transaction/>
     </div>, document.getElementById('statusFeed'));
 
-ReactDOM.render(
-    <div>
-        <StatusUpdate/>
-    </div>, document.getElementById('statusUpdate')
-);
 
