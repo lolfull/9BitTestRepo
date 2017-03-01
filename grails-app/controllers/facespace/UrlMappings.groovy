@@ -9,8 +9,8 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
-        "/page2"(view:"/page2")
+        "/dashboard"(view:"/dashboard")
+        "/transaction"(view:"/transaction")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

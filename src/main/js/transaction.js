@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 var TransactionComponent = React.createClass({
 
@@ -171,10 +172,6 @@ var TransactionComponent = React.createClass({
     }
 });
 
-
-
-
-
 export class Transaction extends React.Component{
     render(){
         return(
@@ -183,4 +180,9 @@ export class Transaction extends React.Component{
             </div>
         );
     }
-}
+};
+
+ReactDOM.render(
+    <div>
+        <Transaction/>
+    </div>, document.getElementById('statusFeed'));

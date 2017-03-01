@@ -2,7 +2,8 @@
 
     module.exports = {
         entry: {
-            index: './src/main/js/index.js',
+            dashboard: './src/main/js/dashboard.js',
+            transaction: './src/main/js/transaction.js'
         },
         output: {
             path: './grails-app/assets/javascripts',
