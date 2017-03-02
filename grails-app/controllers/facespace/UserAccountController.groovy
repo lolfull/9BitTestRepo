@@ -21,14 +21,22 @@ class UserAccountController extends RestfulController{
         def date = params.date
 
         //create transaction object here
+        ArrayList<String> transaction = new ArrayList<String>()
+        transaction.add(amount)
+        transaction.add(category)
+        transaction.add(date)
+
+
 
         //add transaction object to the database here
 
         // check transaction can be found in database
-        //if successful
-        response.status = 200
-        //else
-        response.status = 404
+        if(transaction.size() == 0){
+            response.status = 404
+        }
+        else {
+            response.status = 200
+        }
 
     }
 }
