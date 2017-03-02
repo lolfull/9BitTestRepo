@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>FaceSpace</title>
+        <title>Add Transaction</title>
     </head>
     <body>
         <div id="statusFeed" align="left"></div>

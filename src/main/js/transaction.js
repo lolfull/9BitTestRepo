@@ -33,6 +33,8 @@ var TransactionComponent = React.createClass({
 
     //return to dashboard page
     handleGoBack(e){
+        e.preventDefault();
+        window.location = 'http://localhost:8080/dashboard';
     },
 
     //submit transaction
@@ -75,11 +77,10 @@ var TransactionComponent = React.createClass({
                 }
             }).then(res =>{
                 if(res.ok){
-                    this.setState({error: "transaction added!!! YAY"});
-                    this.handleGoBack()
+                    this.setState({error: "Transaction added!"});
                 }
                 else{
-                    this.setState({error: "transaction couldn't be added"});
+                    this.setState({error: "Transaction couldn't be added."});
                 }
             });
         } else {
