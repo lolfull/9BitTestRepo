@@ -33,7 +33,6 @@ var TransactionComponent = React.createClass({
 
     //return to dashboard page
     handleGoBack(e){
-        //code needed to switch pages
     },
 
     //submit transaction
@@ -65,8 +64,24 @@ var TransactionComponent = React.createClass({
         //if no invalid inputs, then proceed to add transaction to user account and switch back to dashboard,
         //otherwise display an error messsage and stay on the same page
         if (message == ""){
-            //FOR DANIELLE: add function from controller here
-            this.handleGoBack();
+            let amount = this.state.amount;
+            let category = this.state.choice;
+            let date = this.state.date;
+            fetch('http://localhost:8080/userAccount/addTransaction?'
+                + 'amount=' + amount + '&category=' + category + '&date=' + date, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res =>{
+                if(res.ok){
+                    this.setState({error: "transaction added!!! YAY"});
+                    this.handleGoBack()
+                }
+                else{
+                    this.setState({error: "transaction couldn't be added"});
+                }
+            });
         } else {
             this.setState({error: message});
         }
