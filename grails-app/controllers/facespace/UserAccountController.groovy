@@ -24,11 +24,11 @@ class UserAccountController extends RestfulController{
 
         //add transaction object to the database here
 
-        // check if transaction successful
-        //if sucessful
-            response.status = 200
+        // check transaction can be found in database
+        //if successful
+        response.status = 200
         //else
-            response.status = 404
+        response.status = 404
 
     }
 }
