@@ -21822,8 +21822,6 @@ var AccountSignup = _react2.default.createClass({
                                     _react2.default.createElement('input', { type: 'submit', value: 'Sign Up' })
                                 )
                             ),
-                            'Message: ',
-                            this.state.success,
                             _react2.default.createElement(
                                 'p',
                                 { style: { paddingLeft: 200 } },
