@@ -21811,54 +21811,6 @@ var TransactionComponent = _react2.default.createClass({
             ),
             _react2.default.createElement(
                 'div',
-                null,
-                _react2.default.createElement('div', { style: { width: 190, height: 80, background: '#43a047', display: "inline-block" } }),
-                _react2.default.createElement(
-                    'div',
-                    { style: { height: 80, width: 1380, background: '#66BB6A', display: "inline-block", position: "absolute", fontSize: 18 } },
-                    _react2.default.createElement(
-                        'h1',
-                        { style: { color: "#FFFFFF", paddingLeft: 20, fontFamily: "Arial" } },
-                        'Budget Buddy '
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { style: { width: 190, height: 675, position: "absolute", background: "#ECECEC" } },
-                    _react2.default.createElement(
-                        'div',
-                        { style: { height: 200, width: 160, marginLeft: 'auto', marginRight: 'auto', marginTop: 75, marginBottom: 75, background: '#BEBEBE' } },
-                        _react2.default.createElement('img', null),
-                        ' '
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { style: { color: '#BEBEBE', textAlign: 'center', fontSize: 22, borderTopStyle: 'solid', paddingTop: 7, paddingBottom: 7, margin: 0 } },
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'Dashboard'
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'Transactions'
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'Achievements'
-                        ),
-                        _react2.default.createElement(
-                            'p',
-                            null,
-                            'My Account'
-                        )
-                    )
-                )
-            ),
-            _react2.default.createElement(
-                'div',
                 { style: { marginLeft: 225, marginTop: 20 } },
                 _react2.default.createElement(
                     'font',
