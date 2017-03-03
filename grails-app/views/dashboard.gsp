@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="interface_style.css">
+    <link rel="stylesheet" href="${resource(dir: '../stylesheets', file: 'interface_style.css')}" type="text/css">
     <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -29,8 +29,8 @@
 
         <!--Sidebar Options-->
         <div class="selection">
-            <p>Dashboard</p>
-            <p>Transactions</p>
+            <p><a href="http://localhost:8080/dashboard">Dashboard</a></p>
+            <p><a href="http://localhost:8080/transaction">Transactions</a></p>
             <p>Achievements</p>
             <p>My Account</p>
         </div>
