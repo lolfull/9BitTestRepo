@@ -59,6 +59,11 @@ var AccountLogin = React.createClass({
         window.location = 'http://localhost:8080/signup';
     },
 
+    switchdashboard(e){
+        e.preventDefault();
+        window.location = 'http://localhost:8080/dashboard';
+    },
+
     render () {
         return (
             <body style={{backgroundColor:'#ECECEC', height:700}}>
@@ -94,7 +99,7 @@ var AccountLogin = React.createClass({
                             </p>
                         </form>
 
-                        Message: {this.state.success}
+                        {this.state.success}
 
                     </td>
                 </tr>

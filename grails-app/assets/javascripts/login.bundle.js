@@ -21759,6 +21759,10 @@ var AccountLogin = _react2.default.createClass({
         e.preventDefault();
         window.location = 'http://localhost:8080/signup';
     },
+    switchdashboard: function switchdashboard(e) {
+        e.preventDefault();
+        window.location = 'http://localhost:8080/dashboard';
+    },
     render: function render() {
         return _react2.default.createElement(
             'body',
@@ -21819,7 +21823,6 @@ var AccountLogin = _react2.default.createClass({
                                     _react2.default.createElement('input', { type: 'submit', value: 'Login' })
                                 )
                             ),
-                            'Message: ',
                             this.state.success
                         )
                     ),

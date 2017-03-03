@@ -21719,18 +21719,23 @@ var AccountSignup = _react2.default.createClass({
         return {
             name: "",
             password: "",
+            verifyPassword: "",
             success: ""
         };
     },
     handleNameChange: function handleNameChange(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name: e.target.value, success: "..." });
+        this.setState({ name: e.target.value });
     },
     handlePasswordChange: function handlePasswordChange(e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ password: e.target.value, success: "..." });
+        this.setState({ password: e.target.value });
+    },
+    handleVerifyPassword: function handleVerifyPassword(e) {
+        e.preventDefault();
+        this.setState({ verifyPassword: e.target.value });
     },
     handleSubmit: function handleSubmit(e) {
         var _this = this;
@@ -21739,22 +21744,38 @@ var AccountSignup = _react2.default.createClass({
         e.preventDefault();
         var name = this.state.name;
         var password = this.state.password;
+        var verifyPassword = this.state.verifyPassword;
 
-        fetch('http://localhost:8080/userAccount/accountSearch?' + 'userName=' + name + "&password=" + password, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (res) {
-            //if account and password was found
-            if (res.ok) {
-                _this.setState({ success: 'Account found' });
-            }
-            //if account and password was not found
-            else {
-                    _this.setState({ success: 'Account not found' });
+        if (password.localeCompare(verifyPassword) != 0) {
+            e.preventDefault();
+            this.setState({ success: "Passwords do not match!" });
+        } else {
+            fetch('http://localhost:8080/accounts/signup?' + 'userName=' + name + "&password=" + password, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
                 }
-        });
+            }).then(function (res) {
+                //if account and password was created
+                if (res.ok) {
+                    e.preventDefault();
+                    _this.setState({ success: 'Account created! Username: ' + name + ' Password: ' + password });
+                    window.location = 'http://localhost:8080/dashboard';
+                }
+                //if account and password was not created
+                else {
+                        _this.setState({ success: 'Account already exists! Username: ' + name + ' Password: ' + password });
+                    }
+            });
+        }
+    },
+    switchpage: function switchpage(e) {
+        e.preventDefault();
+        window.location = 'http://localhost:8080';
+    },
+    switchdashboard: function switchdashboard(e) {
+        e.preventDefault();
+        window.location = 'http://localhost:8080/dashboard';
     },
     render: function render() {
         return _react2.default.createElement(
@@ -21813,19 +21834,24 @@ var AccountSignup = _react2.default.createClass({
                                         'p',
                                         { style: { paddingLeft: 100 } },
                                         'Re-Enter Password: ',
-                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
+                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.verifyPassword, onChange: this.handleVerifyPassword })
                                     )
                                 ),
                                 _react2.default.createElement(
                                     'p',
                                     { style: { paddingLeft: 200 } },
                                     _react2.default.createElement('input', { type: 'submit', value: 'Sign Up' })
-                                )
+                                ),
+                                this.state.success
                             ),
                             _react2.default.createElement(
-                                'p',
-                                { style: { paddingLeft: 200 } },
-                                _react2.default.createElement('input', { type: 'submit', value: 'Go Back' })
+                                'form',
+                                { onSubmit: this.switchpage },
+                                _react2.default.createElement(
+                                    'p',
+                                    { style: { paddingLeft: 200 } },
+                                    _react2.default.createElement('input', { type: 'submit', value: 'Go Back' })
+                                )
                             )
                         )
                     ),

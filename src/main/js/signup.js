@@ -12,6 +12,7 @@ var AccountSignup = React.createClass({
         return {
             name : "",
             password : "",
+            verifyPassword : "",
             success : ""
         }
     },
@@ -19,40 +20,64 @@ var AccountSignup = React.createClass({
     handleNameChange (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ name : e.target.value , success : "..."});
+        this.setState({ name : e.target.value});
     },
 
     handlePasswordChange (e) {
         // Prevent following the link.
         e.preventDefault();
-        this.setState({ password : e.target.value  , success : "..."});
+        this.setState({ password : e.target.value});
     },
 
+    handleVerifyPassword (e) {
+        e.preventDefault();
+        this.setState({verifyPassword: e.target.value});
+    },
 
     handleSubmit(e) {
         // Prevents reinitialization
         e.preventDefault();
         let name = this.state.name;
         let password = this.state.password;
+        let verifyPassword = this.state.verifyPassword;
 
-        fetch('http://localhost:8080/userAccount/accountSearch?'
-            + 'userName=' + name + "&password=" + password, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res =>{
-            //if account and password was found
-            if(res.ok){
-                this.setState({success: 'Account found'});
-            }
-            //if account and password was not found
-            else{
-                this.setState({success: 'Account not found'});
-            }
-        })
-
+        if (password.localeCompare(verifyPassword) != 0){
+            e.preventDefault();
+            this.setState({ success: "Passwords do not match!"})
+        }
+        else {
+            fetch('http://localhost:8080/accounts/signup?'
+                + 'userName=' + name + "&password=" + password, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => {
+                //if account and password was created
+                if (res.ok) {
+                    e.preventDefault();
+                    this.setState({success: 'Account created! Username: ' + name + ' Password: '+ password});
+                    window.location = 'http://localhost:8080/dashboard';
+                }
+                //if account and password was not created
+                else {
+                    this.setState({success: 'Account already exists! Username: ' + name + ' Password: '+ password});
+                }
+            })
+        }
     },
+
+
+    switchpage(e){
+        e.preventDefault();
+        window.location = 'http://localhost:8080';
+    },
+
+    switchdashboard(e){
+        e.preventDefault();
+        window.location = 'http://localhost:8080/dashboard';
+    },
+
 
     render () {
         return (
@@ -83,16 +108,21 @@ var AccountSignup = React.createClass({
                                 </p>
                                 <p style={{paddingLeft:150}}>Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
                                 </p>
-                                <p style={{paddingLeft:100}}>Re-Enter Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
+                                <p style={{paddingLeft:100}}>Re-Enter Password: <input type="text" defaultValue={this.state.verifyPassword} onChange={this.handleVerifyPassword}/>
                                 </p>
                             </label>
 
                             <p style={{paddingLeft:200}}><input type="submit" value="Sign Up"></input>
                             </p>
+
+
+                            {this.state.success}
+
                         </form>
 
-                        <p style={{paddingLeft:200}}><input type="submit" value="Go Back"></input>
-                        </p>
+                        <form onSubmit={this.switchpage}>
+                            <p style={{paddingLeft:200}}><input type="submit" value="Go Back"></input>
+                            </p></form>
 
 
                     </td>
