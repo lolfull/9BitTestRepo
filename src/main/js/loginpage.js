@@ -35,7 +35,7 @@ var AccountLogin = React.createClass({
         let name = this.state.name;
         let password = this.state.password;
 
-        fetch('http://localhost:8080/userAccount/accountSearch?'
+        fetch('http://localhost:8080/accounts/login?'
             + 'userName=' + name + "&password=" + password, {
             method: 'POST',
             headers: {
@@ -45,6 +45,7 @@ var AccountLogin = React.createClass({
             //if account and password was found
             if(res.ok){
                 this.setState({success: 'Account found'});
+                window.location = 'http://localhost:8080/dashboard';
             }
             //if account and password was not found
             else{
@@ -141,3 +142,5 @@ ReactDOM.render(
     <div>
         <AccountCreation/>
     </div>, document.getElementById('statusFeed'));
+
+

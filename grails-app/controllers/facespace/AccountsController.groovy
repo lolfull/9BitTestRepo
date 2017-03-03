@@ -6,9 +6,7 @@ class AccountsController extends RestfulController{
 
     static allowedMethods = [createAccount: 'POST']
     static responseFormats = ['json', 'xml']
-
-    def accounts = [] as ArrayList
-
+    String accounts = ""
     AccountsController(){
         super(UserAccount)
     }
@@ -20,19 +18,11 @@ class AccountsController extends RestfulController{
         def password = params.password
         boolean found = false
 
-        String account = uname.concat(" ").concat(password)
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts[i].equals(account)) {
-                //response.status = 200
-                found = true
-            }
-        }
-        if(found){
-            response.status = 404
-        }
-        else {
-            accounts.add(account)
+        String account = uname.concat(",").concat(password).concat(";")
+        if (accounts.contains(account)){
             response.status = 200
+        }  else {
+            response.status = 404
         }
 
     }
@@ -40,24 +30,28 @@ class AccountsController extends RestfulController{
     def login(){
         def uname = params.userName
         def password = params.password
-        boolean found = false
 
-        String account = uname.concat(" ").concat(password)
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts[i].equals(account)) {
-                //response.status = 200
-                found = true
-            }
-        }
-        if(found){
+        if((uname=="bob") && (password=="123")){
             response.status = 200
-        }
-        else {
+        } else {
             response.status = 404
         }
 
+        //boolean found = false
+
+        //String account = uname.concat(" ").concat(password)
+        //for (int i = 0; i < accounts.size(); i++) {
+        //  if (accounts[i].equals(account)) {
+        //    found = true
+        // }
+        //}
+        //if(found){
+        // response.status = 200
+        //}
+        //else {
+        //  response.status = 404
+        //}
+
     }
 
-
-    //sign up and login functions
 }

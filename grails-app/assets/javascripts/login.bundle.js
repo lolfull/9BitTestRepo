@@ -21739,7 +21739,7 @@ var AccountLogin = _react2.default.createClass({
         var name = this.state.name;
         var password = this.state.password;
 
-        fetch('http://localhost:8080/userAccount/accountSearch?' + 'userName=' + name + "&password=" + password, {
+        fetch('http://localhost:8080/accounts/login?' + 'userName=' + name + "&password=" + password, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -21748,6 +21748,7 @@ var AccountLogin = _react2.default.createClass({
             //if account and password was found
             if (res.ok) {
                 _this.setState({ success: 'Account found' });
+                window.location = 'http://localhost:8080/dashboard';
             }
             //if account and password was not found
             else {
