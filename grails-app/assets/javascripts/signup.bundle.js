@@ -21780,7 +21780,7 @@ var AccountSignup = _react2.default.createClass({
                                     'h1',
                                     null,
                                     _react2.default.createElement('img', { id: 'pic', src: 'http://i.imgur.com/53taBiC.png', width: '115', height: '133', alt: '' }),
-                                    'Budget Buddyyyy'
+                                    'Budget Buddy'
                                 )
                             )
                         )
@@ -21790,7 +21790,7 @@ var AccountSignup = _react2.default.createClass({
                         null,
                         _react2.default.createElement(
                             'td',
-                            { style: { paddingLeft: 150 } },
+                            null,
                             _react2.default.createElement(
                                 'form',
                                 { onSubmit: this.handleSubmit },
@@ -21799,26 +21799,26 @@ var AccountSignup = _react2.default.createClass({
                                     null,
                                     _react2.default.createElement(
                                         'p',
-                                        null,
+                                        { style: { paddingLeft: 150 } },
                                         'Username: ',
                                         _react2.default.createElement('input', { type: 'text', defaultValue: this.state.name, onChange: this.handleNameChange })
                                     ),
                                     _react2.default.createElement(
                                         'p',
-                                        null,
+                                        { style: { paddingLeft: 150 } },
                                         'Password: ',
                                         _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
                                     ),
                                     _react2.default.createElement(
                                         'p',
-                                        null,
+                                        { style: { paddingLeft: 100 } },
                                         'Re-Enter Password: ',
                                         _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
                                     )
                                 ),
                                 _react2.default.createElement(
                                     'p',
-                                    { style: { paddingLeft: 50 } },
+                                    { style: { paddingLeft: 200 } },
                                     _react2.default.createElement('input', { type: 'submit', value: 'Sign Up' })
                                 )
                             ),
@@ -21826,7 +21826,7 @@ var AccountSignup = _react2.default.createClass({
                             this.state.success,
                             _react2.default.createElement(
                                 'p',
-                                { style: { paddingLeft: 50 } },
+                                { style: { paddingLeft: 200 } },
                                 _react2.default.createElement('input', { type: 'submit', value: 'Go Back' })
                             )
                         )

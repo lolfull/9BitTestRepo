@@ -67,33 +67,31 @@ var AccountSignup = React.createClass({
                     <td style={{align:'left', height:'151', colspan:'2', margin:'auto'}}><blockquote>
                         <h1>
                             <img id="pic" src="http://i.imgur.com/53taBiC.png" width="115" height="133" alt=""/>
-                            Budget Buddyyyy
+                            Budget Buddy
                         </h1>
                     </blockquote></td>
                 </tr>
 
 
                 <tr>
-                    <td style={{paddingLeft:150}}>
+                    <td>
 
                         <form onSubmit={this.handleSubmit}>
 
                             <label>
-                                <p>Username: <input type="text" defaultValue={this.state.name} onChange={this.handleNameChange}/>
+                                <p style={{paddingLeft:150}}>Username: <input type="text" defaultValue={this.state.name} onChange={this.handleNameChange}/>
                                 </p>
-                                <p>Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
+                                <p style={{paddingLeft:150}}>Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
                                 </p>
-                                <p>Re-Enter Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
+                                <p style={{paddingLeft:100}}>Re-Enter Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
                                 </p>
                             </label>
 
-                            <p style={{paddingLeft:50}}><input type="submit" value="Sign Up"></input>
+                            <p style={{paddingLeft:200}}><input type="submit" value="Sign Up"></input>
                             </p>
                         </form>
 
-                        Message: {this.state.success}
-
-                        <p style={{paddingLeft:50}}><input type="submit" value="Go Back"></input>
+                        <p style={{paddingLeft:200}}><input type="submit" value="Go Back"></input>
                         </p>
 
 

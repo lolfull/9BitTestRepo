@@ -1,8 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Add Transaction</title>
-        <link rel="stylesheet" href="${resource(dir: '../stylesheets', file: 'interface_style.css')}" type="text/css">
+        <title>Sign Up</title>
     </head>
 
     <body>
