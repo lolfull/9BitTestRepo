@@ -9,7 +9,7 @@
 
     <div id="statusFeed" align="left"></div>
     <div id="statusUpdate" align="left"></div>
-    <script type="text/javascript" src="../assets/transaction.bundle.js"></script>
+    <script type="text/javascript" src="../assets/signup.bundle.js"></script>
     <br/>
     </body>
 </html>

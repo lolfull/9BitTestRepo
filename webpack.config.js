@@ -3,7 +3,9 @@
     module.exports = {
         entry: {
             dashboard: './src/main/js/dashboard.js',
-            transaction: './src/main/js/transaction.js'
+            transaction: './src/main/js/transaction.js',
+            login: './src/main/js/loginpage.js',
+            signup: './src/main/js/signup.js'
         },
         output: {
             path: './grails-app/assets/javascripts',

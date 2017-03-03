@@ -9,15 +9,25 @@ class Profile {
     PersonInfo info
     FriendList friendList
 
+    //Transaction transaction
+    //ArrayList<Transaction> transactions = new ArrayList<Transaction>()
+
     // mappedBy tells grails how to handle association conflicts
     static mappedBy = [outFriendRequests: 'sourceProfile',
                        inFriendRequests: 'targetProfile']
 
     static hasMany = [posts : Post,
                       outFriendRequests : FriendRequest,
-                      inFriendRequests : FriendRequest]
+                      inFriendRequests : FriendRequest,
+                      achievements: Achievement,
+                      transactions: Transaction]
 
     static hasOne = [friendList : FriendList]
+
+
+    //def get_transactions(){
+    //return transactions
+    //}
 
     static constraints = {
         posts nullable: true

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/assets/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 180);
+/******/ 	return __webpack_require__(__webpack_require__.s = 179);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -21679,8 +21679,7 @@ module.exports = traverseAllChildren;
 /***/ }),
 /* 177 */,
 /* 178 */,
-/* 179 */,
-/* 180 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21689,7 +21688,7 @@ module.exports = traverseAllChildren;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Transaction = undefined;
+exports.Signup = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21707,283 +21706,165 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by Emily on 2017-03-03.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-var TransactionComponent = _react2.default.createClass({
-    displayName: 'TransactionComponent',
+var AccountSignup = _react2.default.createClass({
+    displayName: 'AccountSignup',
 
 
     // Used to initialize state
     getInitialState: function getInitialState() {
         return {
-            amount: "", //transaction amount
-            choice: "", //category choice
-            date: "", //transaction date
-            error: "" //error message to be displayed if invalid input
+            name: "",
+            password: "",
+            success: ""
         };
     },
-
-
-    //store amount in attribute
-    handleAmountChange: function handleAmountChange(e) {
+    handleNameChange: function handleNameChange(e) {
+        // Prevent following the link.
         e.preventDefault();
-        this.setState({ amount: e.target.value });
+        this.setState({ name: e.target.value, success: "..." });
     },
-
-
-    //store amount in attribute
-    handleCategoryChange: function handleCategoryChange(e) {
+    handlePasswordChange: function handlePasswordChange(e) {
+        // Prevent following the link.
         e.preventDefault();
-        this.setState({ choice: this.refs.select.value });
+        this.setState({ password: e.target.value, success: "..." });
     },
-
-
-    //store amount in attribute
-    handleDateChange: function handleDateChange(e) {
-        e.preventDefault();
-        this.setState({ date: e.target.value });
-    },
-
-
-    //return to dashboard page
-    handleGoBack: function handleGoBack(e) {
-        e.preventDefault();
-        window.location = 'http://localhost:8080/dashboard';
-    },
-
-
-    //submit transaction
-    handleCheck: function handleCheck(e) {
+    handleSubmit: function handleSubmit(e) {
         var _this = this;
 
         // Prevents reinitialization
         e.preventDefault();
-        this.setState({ choice: this.refs.select.value }); //get category choice and date from user
-        var message = "";
+        var name = this.state.name;
+        var password = this.state.password;
 
-        //check if the amount is a valid number
-        if (isNaN(this.state.amount)) {
-            message += "Please enter valid amount. ";
-        } else {
-            if (this.state.amount == "") {
-                message += "Please enter amount. ";
+        fetch('http://localhost:8080/userAccount/accountSearch?' + 'userName=' + name + "&password=" + password, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
             }
-        }
-
-        //check if category is selected
-        if (this.state.choice == "selectcategory" || this.state.choice == "") {
-            message += "Please choose a category. ";
-        }
-
-        //check if date is selected
-        if (this.state.date == "") {
-            message += "Please choose a date. ";
-        }
-
-        //if no invalid inputs, then proceed to add transaction to user account and switch back to dashboard,
-        //otherwise display an error messsage and stay on the same page
-        if (message == "") {
-            var amount = this.state.amount;
-            var category = this.state.choice;
-            var date = this.state.date;
-            fetch('http://localhost:8080/userAccount/addTransaction?' + 'amount=' + amount + '&category=' + category + '&date=' + date, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
+        }).then(function (res) {
+            //if account and password was found
+            if (res.ok) {
+                _this.setState({ success: 'Account found' });
+            }
+            //if account and password was not found
+            else {
+                    _this.setState({ success: 'Account not found' });
                 }
-            }).then(function (res) {
-                if (res.ok) {
-                    _this.setState({ error: "Transaction added!" });
-                } else {
-                    _this.setState({ error: "Transaction couldn't be added." });
-                }
-            });
-        } else {
-            this.setState({ error: message });
-        }
+        });
     },
     render: function render() {
         return _react2.default.createElement(
             'body',
-            { style: { margin: 0, padding: 0, fontSize: 0 } },
+            { style: { backgroundColor: '#ECECEC', height: 700 } },
+            _react2.default.createElement('div', { style: { height: 50, margin: 'auto', background: '#ECECEC' } }),
             _react2.default.createElement(
-                'title',
-                null,
-                'Add Transaction/Transfer'
-            ),
-            _react2.default.createElement(
-                'div',
-                { style: { marginLeft: 225, marginTop: 20 } },
+                'table',
+                { style: { marginTop: 50, backgroundColor: '#43a047', margin: 'auto', width: "500", height: "417", border: "0", cellpadding: "0", cellspacing: "5" } },
                 _react2.default.createElement(
-                    'font',
-                    { style: { fontFamily: "Arial" } },
+                    'tbody',
+                    { style: { margin: 'auto', align: 'center' } },
                     _react2.default.createElement(
-                        'font',
-                        { size: '+5' },
-                        'Add Transaction/Transfer'
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { style: { marginTop: 30 } },
+                        'tr',
+                        null,
                         _react2.default.createElement(
-                            'form',
-                            { onSubmit: this.handleCheck },
+                            'td',
+                            { style: { align: 'left', height: '151', colspan: '2', margin: 'auto' } },
                             _react2.default.createElement(
-                                'font',
-                                { size: '+2' },
-                                'Amount'
-                            ),
-                            _react2.default.createElement('br', null),
-                            _react2.default.createElement(
-                                'font',
-                                { size: '+2' },
-                                '$'
-                            ),
-                            _react2.default.createElement('input', { type: 'text', ref: 'amount', name: 'amount', defaultValue: this.state.amount, onChange: this.handleAmountChange }),
-                            _react2.default.createElement(
-                                'div',
-                                { style: { marginTop: 20 } },
+                                'blockquote',
+                                null,
                                 _react2.default.createElement(
-                                    'font',
-                                    { size: '+2' },
-                                    'Category:'
-                                ),
-                                _react2.default.createElement('br', null)
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { style: { marginTop: 5 } },
-                                _react2.default.createElement(
-                                    'select',
-                                    { ref: 'select', id: 'select', onChange: this.handleCategoryChange },
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'selectcategory' },
-                                        ' -- Please select -- '
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'food' },
-                                        'Food'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'housing' },
-                                        'Housing'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'utilities' },
-                                        'Utilities'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'leisure' },
-                                        'Leisure'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'transportation' },
-                                        'Transportation'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'savings' },
-                                        'Savings'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'school' },
-                                        'School'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'clothing' },
-                                        'Clothing'
-                                    ),
-                                    _react2.default.createElement(
-                                        'option',
-                                        { value: 'other' },
-                                        'Other'
-                                    )
-                                ),
-                                _react2.default.createElement('br', null)
-                            ),
-                            _react2.default.createElement(
-                                'div',
-                                { style: { marginTop: 20 } },
-                                _react2.default.createElement(
-                                    'font',
-                                    { size: '+2' },
-                                    'Date of Transaction:'
-                                ),
-                                _react2.default.createElement('br', null)
-                            ),
-                            _react2.default.createElement('input', { ref: 'date', type: 'date', id: 'date', onChange: this.handleDateChange }),
-                            _react2.default.createElement(
-                                'div',
-                                { style: { marginTop: 30 } },
-                                _react2.default.createElement('input', { type: 'submit', value: 'Add' })
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { style: { marginTop: 30 } },
-                            _react2.default.createElement(
-                                'form',
-                                { onSubmit: this.handleGoBack },
-                                _react2.default.createElement('input', { type: 'submit', value: 'Go back to dashboard' })
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { style: { marginTop: 60 } },
-                            _react2.default.createElement(
-                                'font',
-                                { size: '+1', color: 'red' },
-                                _react2.default.createElement(
-                                    'b',
+                                    'h1',
                                     null,
-                                    this.state.error
+                                    _react2.default.createElement('img', { id: 'pic', src: 'http://i.imgur.com/53taBiC.png', width: '115', height: '133', alt: '' }),
+                                    'Budget Buddyyyy'
                                 )
                             )
                         )
-                    )
+                    ),
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'td',
+                            { style: { paddingLeft: 150 } },
+                            _react2.default.createElement(
+                                'form',
+                                { onSubmit: this.handleSubmit },
+                                _react2.default.createElement(
+                                    'label',
+                                    null,
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'Username: ',
+                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.name, onChange: this.handleNameChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'Password: ',
+                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
+                                    ),
+                                    _react2.default.createElement(
+                                        'p',
+                                        null,
+                                        'Re-Enter Password: ',
+                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    { style: { paddingLeft: 50 } },
+                                    _react2.default.createElement('input', { type: 'submit', value: 'Sign Up' })
+                                )
+                            ),
+                            'Message: ',
+                            this.state.success,
+                            _react2.default.createElement(
+                                'p',
+                                { style: { paddingLeft: 50 } },
+                                _react2.default.createElement('input', { type: 'submit', value: 'Go Back' })
+                            )
+                        )
+                    ),
+                    _react2.default.createElement('td', { width: '175' })
                 )
             )
         );
     }
 });
 
-var Transaction = exports.Transaction = function (_React$Component) {
-    _inherits(Transaction, _React$Component);
+var Signup = exports.Signup = function (_React$Component) {
+    _inherits(Signup, _React$Component);
 
-    function Transaction() {
-        _classCallCheck(this, Transaction);
+    function Signup() {
+        _classCallCheck(this, Signup);
 
-        return _possibleConstructorReturn(this, (Transaction.__proto__ || Object.getPrototypeOf(Transaction)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Signup.__proto__ || Object.getPrototypeOf(Signup)).apply(this, arguments));
     }
 
-    _createClass(Transaction, [{
+    _createClass(Signup, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(TransactionComponent, null)
+                _react2.default.createElement(AccountSignup, null)
             );
         }
     }]);
 
-    return Transaction;
+    return Signup;
 }(_react2.default.Component);
-
-;
 
 _reactDom2.default.render(_react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(Transaction, null)
+    _react2.default.createElement(Signup, null)
 ), document.getElementById('statusFeed'));
 
 /***/ })

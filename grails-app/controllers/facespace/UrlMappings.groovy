@@ -9,6 +9,8 @@ class UrlMappings {
             }
         }
 
+        "/" (view:"/loginpage")
+        "/signup" (view: "/signup")
         "/dashboard"(view:"/dashboard")
         "/transaction"(view:"/transaction")
         "500"(view:'/error')
