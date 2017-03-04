@@ -21828,13 +21828,13 @@ var AccountSignup = _react2.default.createClass({
                                         'p',
                                         { style: { paddingLeft: 150 } },
                                         'Password: ',
-                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
+                                        _react2.default.createElement('input', { type: 'password', defaultValue: this.state.password, onChange: this.handlePasswordChange })
                                     ),
                                     _react2.default.createElement(
                                         'p',
                                         { style: { paddingLeft: 100 } },
                                         'Re-Enter Password: ',
-                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.verifyPassword, onChange: this.handleVerifyPassword })
+                                        _react2.default.createElement('input', { type: 'password', defaultValue: this.state.verifyPassword, onChange: this.handleVerifyPassword })
                                     )
                                 ),
                                 _react2.default.createElement(

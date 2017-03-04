@@ -100,7 +100,7 @@ function drawChart() {
 
     // Set chart options
     var options = {
-        'title': 'How Much Pizza I Ate Last Night',
+        'title': 'Number of Recent Transactions By Type',
         'width': 600,
         'height': 400
     };

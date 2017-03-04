@@ -23,7 +23,7 @@
                 <p><a href="http://localhost:8080/dashboard">Dashboard</a></p>
                 <p><a href="http://localhost:8080/transaction">Transactions</a></p>
                 <p>Achievements</p>
-                <p>My Account</p>
+                <p><a href="http://localhost:8080/settings">My Account</a></p>
             </div>
         </div>
     </div>

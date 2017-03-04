@@ -92,7 +92,7 @@ var AccountLogin = React.createClass({
                             <label>
                                 <p>Username: <input type="text" defaultValue={this.state.name} onChange={this.handleNameChange}/>
                                 </p>
-                                <p>Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
+                                <p>Password: <input type="password" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
                                 </p>
                             </label>
 

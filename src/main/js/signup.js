@@ -106,9 +106,9 @@ var AccountSignup = React.createClass({
                             <label>
                                 <p style={{paddingLeft:150}}>Username: <input type="text" defaultValue={this.state.name} onChange={this.handleNameChange}/>
                                 </p>
-                                <p style={{paddingLeft:150}}>Password: <input type="text" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
+                                <p style={{paddingLeft:150}}>Password: <input type="password" defaultValue={this.state.password} onChange={this.handlePasswordChange}/>
                                 </p>
-                                <p style={{paddingLeft:100}}>Re-Enter Password: <input type="text" defaultValue={this.state.verifyPassword} onChange={this.handleVerifyPassword}/>
+                                <p style={{paddingLeft:100}}>Re-Enter Password: <input type="password" defaultValue={this.state.verifyPassword} onChange={this.handleVerifyPassword}/>
                                 </p>
                             </label>
 

@@ -21815,7 +21815,7 @@ var AccountLogin = _react2.default.createClass({
                                         'p',
                                         null,
                                         'Password: ',
-                                        _react2.default.createElement('input', { type: 'text', defaultValue: this.state.password, onChange: this.handlePasswordChange })
+                                        _react2.default.createElement('input', { type: 'password', defaultValue: this.state.password, onChange: this.handlePasswordChange })
                                     )
                                 ),
                                 _react2.default.createElement(
