@@ -5,12 +5,6 @@ class Transaction {
     Double amount
     String category
     String date
-    String d1
-    String d2
-    String d3
-    Integer year
-    Integer month
-    Integer day
 
     Transaction(double amount, String category, String date){
         this.amount = amount
@@ -18,7 +12,7 @@ class Transaction {
         this.date = date
 
         //Now we break up the string into year, month and day
-        String[] datestuff = date.split("-")
+        /*String[] datestuff = date.split("-")
 
         d1 = datestuff[0]//year
         d2 = datestuff[1]//month
@@ -31,10 +25,12 @@ class Transaction {
         //assign to constructor
         this.year = year
         this.month = month
-        this.day = day
+        this.day = day*/
 
 
     }
+
+    static belongsTo = [sourceProfile: Profile]
 
     static constraints = {
         //constaints so that year, month and day values all make sense

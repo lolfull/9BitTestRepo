@@ -6,23 +6,16 @@ class Profile {
     // the Profile called userProfile in the UserAccount class
     // i.e. it is correctly inferring the 1-to-1 relationship
     UserAccount ownerAccount
-    PersonInfo info
-    FriendList friendList
+    Transaction transactions
 
     //Transaction transaction
     //ArrayList<Transaction> transactions = new ArrayList<Transaction>()
 
     // mappedBy tells grails how to handle association conflicts
-    static mappedBy = [outFriendRequests: 'sourceProfile',
-                       inFriendRequests: 'targetProfile']
+    /*static mappedBy = [outFriendRequests: 'sourceProfile',
+                       inFriendRequests: 'targetProfile']*/
 
-    static hasMany = [posts : Post,
-                      outFriendRequests : FriendRequest,
-                      inFriendRequests : FriendRequest,
-                      achievements: Achievement,
-                      transactions: Transaction]
-
-    static hasOne = [friendList : FriendList]
+    static hasMany = [transactions: Transaction]
 
 
     //def get_transactions(){
@@ -30,12 +23,10 @@ class Profile {
     //}
 
     static constraints = {
-        posts nullable: true
-        inFriendRequests nullable: true
-        outFriendRequests nullable: true
-        info unique: true
-        info nullable: true
-        friendList nullable: true
-        friendList unique: true
+        //posts nullable: true
+        //inFriendRequests nullable: true
+        //outFriendRequests nullable: true
+        transactions unique: true
+        transactions nullable: false
     }
 }

@@ -6,6 +6,14 @@ class UserAccountController extends RestfulController{
 
     static allowedMethods = [createAccount: 'POST']
     static responseFormats = ['json', 'xml']
+    //each transaction is separated by a semicolon
+    //each data point in the transaction is comma separated
+    String transactions = "30, food, 2011-01-23;" +
+            " 1700, housing, 2013-04-07;" +
+            " 53, savings, 2014-10-13;" +
+            " 23, transportation, 2013-08-21;" +
+            " 400, utilities, 2012-06-15"
+    double count = 5
 
     UserAccountController(){
         super(UserAccount)
@@ -18,11 +26,12 @@ class UserAccountController extends RestfulController{
         //would this index point to the transaction view?
     }
 
+    //for fetch also
     def addTransaction(){
         //def uname = params.userName
-        def amount = params.amount
-        def category = params.category
-        def date = params.date
+        double amount = params.amount
+        String category = params.category
+        String date = params.date
 
         //check that username exists and if it's not null then add a new transaction
         //def account = UserAccount.find{userName == uname}
@@ -36,27 +45,19 @@ class UserAccountController extends RestfulController{
         //response.status = 404
         //}
 
+        String toAdd = Double.toString(amount) + ',' + category + ',' + date + ';'
 
-        //create transaction object here
-        ArrayList<Transaction> transactions = new ArrayList<Transaction>()
+        transactions.concat(toAdd)
 
-        //add transaction object to the database here
-        Transaction newTransaction = new Transaction(amount: amount, category: category, date: date)
-        newTransaction.save()
+        double temp = count
 
-        transactions.add(newTransaction)
-
-        //ArrayList<String> transaction = new ArrayList<String>()
-        //transaction.add(amount)
-        //transaction.add(category)
-        //transaction.add(date)
-
+        count++
 
         // check transaction can be found in database
         //def check_transaction = Profile.getTransactions()
 
         //check if transaction was added (works for single transaction added)
-        if(transactions.size() == 0){
+        if(!(temp + 1 == count)){
             response.status = 404
         }
         else {
@@ -65,7 +66,8 @@ class UserAccountController extends RestfulController{
 
     }
 
-    //def get_transactions(){
-    //return transactions
-    //}
+    //for fetch command
+    def get_transactions(){
+        return transactions
+    }
 }

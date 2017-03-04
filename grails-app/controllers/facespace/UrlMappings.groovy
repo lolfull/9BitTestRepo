@@ -13,6 +13,7 @@ class UrlMappings {
         "/signup" (view: "/signup")
         "/dashboard"(view:"/dashboard")
         "/transaction"(view:"/transaction")
+        "/settings"(view:"/settings")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
