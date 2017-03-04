@@ -54,12 +54,6 @@
 <div id="table_div2" style="position:absolute; left:790px; top: 480px;">
 
 </div>
-<g:each in="${transactions}" var="transaction" status="i">
-    <h3>${i+1}. ${transaction.amount}, ${transaction.date}</h3>
-    <p>
-        Category: ${transaction.category}
-    </p>
-    <br/>
-</g:each>
+
 </body>
 </html>
