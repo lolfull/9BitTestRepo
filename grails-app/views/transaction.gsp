@@ -20,10 +20,11 @@
 
             <!--Sidebar Options-->
             <div class="selection">
-                <p><a href="http://localhost:8080/dashboard">Dashboard</a></p>
-                <p><a href="http://localhost:8080/transaction">Transactions</a></p>
-                <p>Achievements</p>
-                <p><a href="http://localhost:8080/settings">My Account</a></p>
+                <p><a href="http://localhost:8080/dashboard" style="text-decoration:none">Dashboard</a></p>
+                <p><a href="http://localhost:8080/transaction" style="text-decoration:none">Transactions</a></p>
+                <p><a href="http://localhost:8080/achievements" style="text-decoration:none">Achievements</a></p>
+                <p><a href="http://localhost:8080/settings" style="text-decoration:none">My Account</a></p>
+                <p><a href="http://localhost:8080/login" style="text-decoration:none">Logout</a></p>
             </div>
         </div>
     </div>

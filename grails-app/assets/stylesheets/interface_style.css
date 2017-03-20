@@ -34,7 +34,8 @@ h1 {
   margin-right: auto;
   margin-top: 75px;
   margin-bottom: 75px;
-  background: #BEBEBE;
+  background-image: url("http://i.imgur.com/v085Nmb.png");
+  background-color: #BEBEBE;
 }
 
 .sidebar {

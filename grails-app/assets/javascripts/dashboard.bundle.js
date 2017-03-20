@@ -94,8 +94,8 @@ function drawChart() {
 
     // Create the data table.
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
+    data.addColumn('string', 'Transactions Categories');
+    data.addColumn('number', 'Amount');
     data.addRows([['Housing', 3], ['Food', 1], ['Leisure', 1], ['Legal', 1], ['Gas', 2]]);
 
     // Set chart options

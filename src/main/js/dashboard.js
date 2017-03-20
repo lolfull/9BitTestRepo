@@ -12,6 +12,7 @@ google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTableChart);
 google.charts.setOnLoadCallback(drawTableChart2);
 
+
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
 // draws it.
